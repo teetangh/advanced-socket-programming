@@ -89,3 +89,5 @@ int main(int argc, char *argv[])
 }
 
 // gcc udpclient.c -o udpclient.o -lws2_32
+// OR
+// gcc -o udpclient udpclient.c -lws2_32

@@ -78,3 +78,5 @@ int main(int argc, char *argv[])
 }
 
 // gcc udpserver.c -o udpserver.o -lws2_32
+// OR
+// gcc -o udpserver udpserver.c -lws2_32
