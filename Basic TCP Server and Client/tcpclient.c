@@ -93,11 +93,11 @@ int main(int argc, char *argv[])
 
 /* WINDOWS */
 // For object File
-// gcc udpclient.c -o udpclient.o -lws2_32
+// gcc tcpclient.c -o tcpclient.o -lws2_32
 
 // For Executable File
-// gcc -o udpclient udpclient.c -lws2_32
+// gcc -o tcpclient tcpclient.c -lws2_32
 
 /* UNIX */
-// gcc udpclient.c -o udpclient
-//  ./udpclient localhost 2333
+// gcc tcpclient.c -o tcpclient
+//  ./tcpclient localhost 2444
