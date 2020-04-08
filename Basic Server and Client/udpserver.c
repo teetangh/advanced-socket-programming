@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
     struct sockaddr_in serverAddr;
     int socketfd;
@@ -76,3 +76,5 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+// gcc udpserver.c -o udpserver.o -lws2_32

@@ -17,7 +17,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char const *argv[])
+// #include <netdb.h/in.h>
+// // void bzero(void *s, size_t n);
+// #define bzero(s, n) memset((s), 0, (n))
+
+// // void bcopy(const void *s1, void *s2, size_t n);
+// #define bcopy(s1, s2, n) memmove((s2), (s1), (n))
+
+int main(int argc, char *argv[])
 {
     struct sockaddr_in serverAddr;
     struct hostent *server;
@@ -80,3 +87,5 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+// gcc udpclient.c -o udpclient.o -lws2_32
