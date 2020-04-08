@@ -10,7 +10,7 @@
 #include <netdb.h>
 
 #include <stdio.h>
-#include <stdio.h>
+#include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
