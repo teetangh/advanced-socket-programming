@@ -2,11 +2,11 @@
 // 08 Apr 2020
 
 // FOR WINDOWS
-#include <winsock2.h>
+// #include <winsock2.h>
 
 // FOR UNIX
-// #include <arpa/inet.h>
-// #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
 
 #include <stdio.h>
 #include <stdio.h>

@@ -2,11 +2,12 @@
 // 08 Apr 2020
 
 // FOR WINDOWS
-#include <winsock2.h>
+// #include <winsock2.h>
 
 // FOR UNIX
-// #include <arpa/inet.h>
-// #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <netdb.h>
 
 #include <stdio.h>
 #include <stdio.h>
@@ -17,12 +18,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include <netdb.h/in.h>
 // // void bzero(void *s, size_t n);
 // #define bzero(s, n) memset((s), 0, (n))
 
 // // void bcopy(const void *s1, void *s2, size_t n);
 // #define bcopy(s1, s2, n) memmove((s2), (s1), (n))
+
+#define h_addr h_addr_list[0] /* for backward compatibility */
 
 int main(int argc, char *argv[])
 {
