@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
     serverAddr.sin_port = htons(portno);
 
-    if (bind(socketfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr) < 0))
+    if (bind(socketfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
     {
         perror("failed to bind\n");
         exit(2);
