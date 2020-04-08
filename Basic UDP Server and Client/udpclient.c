@@ -56,13 +56,6 @@ int main(int argc, char *argv[])
         exit(2);
     }
 
-    server = gethostbyname(hostname);
-    if (server == NULL)
-    {
-        fprintf(stderr, "Can't resolve hostname\n");
-        exit(2);
-    }
-
     bzero((char *)&serverAddr, sizeof(serverAddr));
     serverAddr.sin_family = AF_INET;
     bcopy((char *)server->h_addr, (char *)&serverAddr.sin_addr.s_addr, server->h_length);

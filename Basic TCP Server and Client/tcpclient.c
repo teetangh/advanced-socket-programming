@@ -42,18 +42,11 @@ int main(int argc, char *argv[])
     hostname = argv[1];
     int portno = atoi(argv[2]);
 
-    socketfd = socket(AF_INET, SOCK_DGRAM, 0);
+    socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (!socketfd)
     {
         perror("Error in opening socket\n");
         exit(1);
-    }
-
-    server = gethostbyname(hostname);
-    if (server == NULL)
-    {
-        fprintf(stderr, "Can't resolve hostname\n");
-        exit(2);
     }
 
     server = gethostbyname(hostname);
@@ -68,26 +61,33 @@ int main(int argc, char *argv[])
     bcopy((char *)server->h_addr, (char *)&serverAddr.sin_addr.s_addr, server->h_length);
     serverAddr.sin_port = htons(portno);
 
+    if (connect(socketfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
+    {
+        perror("Connect");
+        exit(3);
+    }
+
     char *buf = "Hello there!!\n";
     int bufLen = strlen(buf);
-    if (sendto(socketfd, buf, bufLen + 1, 0, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
+    if (send(socketfd, buf, bufLen + 1, 0) < 0)
     {
-        perror("Error in sending\n");
-        exit(3);
+        perror("Error in sending");
+        exit(4);
     }
 
     char recvBuf[2048];
     bufLen = sizeof(recvBuf);
     int recvLen = 0;
-    int serLen = sizeof(serverAddr);
-    if ((recvLen = recvfrom(socketfd, recvBuf, bufLen, 0, (struct sockaddr *)&serverAddr, &serLen)) < 0)
+    int servLen = sizeof(serverAddr);
+    if ((recvLen = recv(socketfd, recvBuf, bufLen, 0)) < 0)
     {
-        recvBuf[recvLen] = 0;
-        printf("Recv from %s: %d:\n", inet_ntoa(serverAddr.sin_addr), ntohs(serverAddr.sin_port));
-        printf(" %s\n", recvBuf);
+        perror("Error in receiving");
+        exit(5);
     }
+    recvBuf[recvLen] = 0;
+    printf("recv %s \n", recvBuf);
+    close(socketfd);
 
-    printf("%s \n", recvBuf);
     return 0;
 }
 
@@ -97,7 +97,6 @@ int main(int argc, char *argv[])
 
 // For Executable File
 // gcc -o udpclient udpclient.c -lws2_32
-
 
 /* UNIX */
 // gcc udpclient.c -o udpclient
