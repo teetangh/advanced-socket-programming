@@ -87,9 +87,18 @@ int main(int argc, char *argv[])
         printf(" %s\n", recvBuf);
     }
 
+    printf("%s \n", recvBuf);
     return 0;
 }
 
+/* WINDOWS */
+// For object File
 // gcc udpclient.c -o udpclient.o -lws2_32
-// OR
+
+// For Executable File
 // gcc -o udpclient udpclient.c -lws2_32
+
+
+/* UNIX */
+// gcc udpclient.c -o udpclient
+//  ./udpclient localhost 2333

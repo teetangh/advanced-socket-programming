@@ -7,6 +7,7 @@
 // FOR UNIX
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <netdb.h>
 
 #include <stdio.h>
 #include <sys/socket.h>
@@ -77,6 +78,15 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+/* WINDOWS */
+// For object File
 // gcc udpserver.c -o udpserver.o -lws2_32
-// OR
+
+// For Executable File
 // gcc -o udpserver udpserver.c -lws2_32
+
+
+
+/* UNIX */
+// gcc udpserver.c -o udpserver
+//  ./udpserver 2333
